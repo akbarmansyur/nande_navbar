@@ -1,7 +1,7 @@
 name: nande_navbar
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/akbarmansyur/nande_navbar
 
 environment:
   sdk: '>=2.18.5 <3.0.0'

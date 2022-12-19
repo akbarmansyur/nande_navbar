@@ -3,12 +3,12 @@ library nande_navbar;
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class MyCustomNavbar extends StatelessWidget {
+class NandeNavbar extends StatelessWidget {
   final EdgeInsets? padding;
   final BorderRadius? borderRadius;
   final Color? backgroundColor;
   final double height;
-  final List<CustomItem> customItems;
+  final List<NandeItem> customItems;
   final TextStyle? labelStyle;
   final bool enableLabel;
   final Color? selectedColor;
@@ -19,7 +19,7 @@ class MyCustomNavbar extends StatelessWidget {
   final Function(int) onTap;
   final double selectedIconSize;
   final double unselectedIconSize;
-  const MyCustomNavbar({
+  const NandeNavbar({
     Key? key,
     this.padding = const EdgeInsets.all(0),
     this.borderRadius,
@@ -55,7 +55,7 @@ class MyCustomNavbar extends StatelessWidget {
             children: [
               for (var item in customItems) ...[
                 Expanded(
-                  child: MyCustomNavbarItem(
+                  child: NandeNavbarItems(
                     currentIndex: currentIndex,
                     item: item,
                     index: customItems.indexOf(item),
@@ -77,20 +77,20 @@ class MyCustomNavbar extends StatelessWidget {
   }
 }
 
-class CustomItem {
+class NandeItem {
   final IconData icon;
   final IconData? selectedIcon;
   final String? label;
 
-  CustomItem({
+  NandeItem({
     required this.icon,
     this.selectedIcon,
     this.label,
   });
 }
 
-class MyCustomNavbarItem extends StatefulWidget {
-  final CustomItem item;
+class NandeNavbarItems extends StatefulWidget {
+  final NandeItem item;
   final int currentIndex;
   final int index;
   final Function(int) ontap;
@@ -103,7 +103,7 @@ class MyCustomNavbarItem extends StatefulWidget {
 
   final bool enableLabel;
   final TextStyle labelStyle;
-  const MyCustomNavbarItem({
+  const NandeNavbarItems({
     Key? key,
     required this.currentIndex,
     required this.index,
@@ -120,10 +120,10 @@ class MyCustomNavbarItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MyCustomNavbarItem> createState() => _MyCustomNavbarItemState();
+  State<NandeNavbarItems> createState() => _NandeNavbarItemsState();
 }
 
-class _MyCustomNavbarItemState extends State<MyCustomNavbarItem>
+class _NandeNavbarItemsState extends State<NandeNavbarItems>
     with SingleTickerProviderStateMixin {
   late int currentIndex;
   late AnimationController animationController;
@@ -199,7 +199,7 @@ class _MyCustomNavbarItemState extends State<MyCustomNavbarItem>
   }
 
   @override
-  void didUpdateWidget(covariant MyCustomNavbarItem oldWidget) {
+  void didUpdateWidget(covariant NandeNavbarItems oldWidget) {
     if (widget.currentIndex != oldWidget.currentIndex) {
       currentIndex = widget.currentIndex;
       if (currentIndex == widget.index) {
