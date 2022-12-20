@@ -108,13 +108,13 @@ To use this package and access its content, add this dependency to your pubspec.
 
 ```
 dependencies:
-    canton_ui: <latest_version>
+    nande_navbar: <latest_version>
 ```
 
 And simply import the package using this code
 
 ```
-import 'package:canton_ui/canton_ui.dart';
+import 'package:nande_navbar/nande_navbar.dart';
 ```
 
 BTW `package:flutter/material.dart` is already imported when using this package so no need to re-import :)
