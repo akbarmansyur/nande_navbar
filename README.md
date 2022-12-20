@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Description
 
-This includes things such as themes (colors, typography, etc.), custom methods, buttons, text-inputs, a color picker, and more. This all in attempt to limit the amount of time I spend on remaking simple tools and ui, while still customizing my screens to my flavor. Please note that this package will not be uploaded on pub.dev in the near future.
+A new Flutter package project
 
 ## Getting Started
 
@@ -108,13 +108,13 @@ To use this package and access its content, add this dependency to your pubspec.
 
 ```
 dependencies:
-    canton_ui: <latest_version>
+    nande_navbar: <latest_version>
 ```
 
 And simply import the package using this code
 
 ```
-import 'package:canton_ui/canton_ui.dart';
+import 'package:nande_navbar/nande_navbar.dart';
 ```
 
 BTW `package:flutter/material.dart` is already imported when using this package so no need to re-import :)
