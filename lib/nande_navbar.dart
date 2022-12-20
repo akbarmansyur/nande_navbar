@@ -6,6 +6,7 @@ import 'dart:math' as math;
 class NandeNavbar extends StatelessWidget {
   final EdgeInsets? padding;
   final BorderRadius? borderRadius;
+  final BorderRadius? itemBorderRadius;
   final Color? backgroundColor;
   final double height;
   final List<NandeItem> customItems;
@@ -23,6 +24,7 @@ class NandeNavbar extends StatelessWidget {
     Key? key,
     this.padding = const EdgeInsets.all(0),
     this.borderRadius,
+    this.itemBorderRadius,
     this.backgroundColor,
     this.height = 60,
     required this.customItems,
@@ -56,6 +58,8 @@ class NandeNavbar extends StatelessWidget {
               for (var item in customItems) ...[
                 Expanded(
                   child: NandeNavbarItems(
+                    itemBorderRadius:
+                        itemBorderRadius ?? BorderRadius.circular(0),
                     currentIndex: currentIndex,
                     item: item,
                     index: customItems.indexOf(item),
@@ -100,6 +104,7 @@ class NandeNavbarItems extends StatefulWidget {
   final Color unSelectedColor;
   final double selectedIconSize;
   final double unselectedIconSize;
+  final BorderRadius itemBorderRadius;
 
   final bool enableLabel;
   final TextStyle labelStyle;
@@ -117,6 +122,7 @@ class NandeNavbarItems extends StatefulWidget {
     required this.unselectedIconSize,
     required this.labelStyle,
     required this.enableLabel,
+    required this.itemBorderRadius,
   }) : super(key: key);
 
   @override
@@ -248,11 +254,10 @@ class _NandeNavbarItemsState extends State<NandeNavbarItems>
         padding: const EdgeInsets.symmetric(vertical: 2),
         child: Material(
           type: MaterialType.transparency,
-          borderRadius: BorderRadius.circular(20),
           child: InkWell(
             splashColor: widget.splashcolor,
             highlightColor: widget.highlightColor,
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: widget.itemBorderRadius,
             onTap: () {
               widget.ontap(widget.index);
             },
