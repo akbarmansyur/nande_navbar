@@ -1,39 +1,121 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+# nande_navbar
+Plugin to create native navbar for iOS, Android, Web and Windows
 
 ## Usage
+To use this plugin, add ```fancy_alert_dialog``` as a [dependency in your pubspec.yaml](https://flutter.io/platform-plugins/).
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+### Example
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:nande_navbar/nande_navbar.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Nande Navbar',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int currentIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: Text('page = ${currentIndex + 1}'),
+          ),
+          NandeNavbar(
+            currentIndex: currentIndex,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            customItems: [
+              NandeItem(
+                  selectedIcon: Icons.home_outlined,
+                  icon: Icons.home,
+                  label: 'home'),
+              NandeItem(
+                  selectedIcon: Icons.explore_outlined,
+                  icon: Icons.explore,
+                  label: 'gallery'),
+              NandeItem(
+                  selectedIcon: Icons.play_arrow_outlined,
+                  icon: Icons.play_arrow,
+                  label: 'product'),
+              NandeItem(
+                  selectedIcon: Icons.shopping_cart_outlined,
+                  icon: Icons.shopping_cart,
+                  label: 'product'),
+              NandeItem(
+                  selectedIcon: Icons.person_outlined,
+                  icon: Icons.person,
+                  label: 'product'),
+            ],
+            backgroundColor: Colors.grey.shade200,
+            height: 60,
+            selectedIconSize: 28,
+            unselectedIconSize: 24,
+            enableLabel: true,
+            labelStyle: TextStyle(color: Colors.red),
+          ),
+        ],
+      ),
+    );
+  }
+}
 ```
 
-## Additional information
+## Description
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This includes things such as themes (colors, typography, etc.), custom methods, buttons, text-inputs, a color picker, and more. This all in attempt to limit the amount of time I spend on remaking simple tools and ui, while still customizing my screens to my flavor. Please note that this package will not be uploaded on pub.dev in the near future.
+
+## Getting Started
+
+To use this package and access its content, add this dependency to your pubspec.yaml
+
+```
+dependencies:
+    canton_ui: <latest_version>
+```
+
+And simply import the package using this code
+
+```
+import 'package:canton_ui/canton_ui.dart';
+```
+
+BTW `package:flutter/material.dart` is already imported when using this package so no need to re-import :)
+
